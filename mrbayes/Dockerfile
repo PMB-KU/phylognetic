@@ -2,7 +2,9 @@ FROM debian
 
 RUN apt-get update && \
     apt-get install -y autoconf \
+        build-essential \
         g++ \
+        gcc \
         git \
         libreadline-dev \
         libtool \
@@ -18,13 +20,12 @@ RUN apt-get update && \
 WORKDIR /beagle-lib
 
 RUN ./autogen.sh && \
-    ./configure --without-jdk LDFLAGS=Wl,-rpath=/usr/local/lib && \
+    ./configure --without-jdk LDFLAGS=-Wl,-rpath=/usr/local/lib && \
     make -j2 && \
     make install
 
 WORKDIR /MrBayes
 
-RUN ./configure --with mpi && \
+RUN ./configure --with-mpi && \
     make -j2
 
-WORKDIR /local_volume
