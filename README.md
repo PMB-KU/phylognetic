@@ -66,7 +66,7 @@ construct phylogenetic tree by maximum likelihood method (ML search + bootsrap) 
 raxml-ng-mpi --msa input.afa --all --model LG+G+I --bs-trees 1000 --threads 8
 ```
 
-Outputfile which extension is `.support` is besttree with bootstrap values.
+Outputfile with the extension `.support` is besttree with bootstrap values.
 
 ## Reference
 
