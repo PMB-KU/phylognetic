@@ -6,7 +6,30 @@
 |---|---|
 |trimal|remove not conserved sites in multiple alignment|
 |RAxML-ng-mpi|phylognetic analysis by maximum likelihood method|
+|Mrbayes|phylognetic analysis by baysian inference|
 |gs2|phylogenetic analysis by graph splitting method|
+
+## Workflow
+
+### Maximum Likelihood and Baysian Inference Methods
+
+1. Multiple Alignment (MUSCLE, MAFFT etc.,)
+2. Removing not conserved sites (Manual removing or using tools such as trimal)
+3. Construct Phylognetic tree (PhyML, RAxML, FastTree, Mrbayes etc.,)
+4. Visualization
+
+### Graph Splitting Methods
+
+1. Construct Phylogenetic tree from a raw fasta file (gs2)
+2. Visualization
+
+#### Popular tools for visualization
+
+|tool name|type|description|
+|---|---|---|
+|[FigTree](https://github.com/rambaut/figtree/releases)|Software||
+|[Icytree](https://icytree.org)|Web||
+|[iToL](https://itol.embl.de)|Web||
 
 ## Usage
 
@@ -38,7 +61,7 @@ Please read [MANUAL](http://trimal.cgenomics.org/use_of_the_command_line_trimal_
 
 **example:**
 
-to construct phylogenetic tree by maximum likelihood method
+removing not conserved sites for maximum likelihood method
 
 ```bash
 trimal -in seqs.afa -out seqs_trim.afa -automated1
@@ -66,7 +89,15 @@ construct phylogenetic tree by maximum likelihood method (ML search + bootsrap) 
 raxml-ng-mpi --msa input.afa --all --model LG+G+I --bs-trees 1000 --threads 8
 ```
 
-Outputfile with the extension `.support` is besttree with bootstrap values.
+Output file with the extension `.support` is best tree with bootstrap values.
+
+### MrBayes
+
+You should make the nexus format file from multiple alignment fasta.
+
+Please read [MANUAL](https://nbisweden.github.io/MrBayes/manual.html)
+
+**example:** todo!();
 
 ## Reference
 
@@ -74,3 +105,4 @@ Outputfile with the extension `.support` is besttree with bootstrap values.
 2. Frederic Lemoine, Jean-Baka Domelevo Entfellner, Eduan Wilkinson, Damien Correia, Miraine Davila Felipe, Tulio De Oliveira, and Olivier Gascuel, Renewing Felsensteins phylogenetic bootstrap in the era of big data, Nature, 2018
 Motomu Matsui and Wataru Iwasaki, Graph Splitting: A Graph-Based Approach for Superfamily-Scale Phylogenetic Tree Reconstruction, Systematic Biology, 2019
 3. Alexey M. Kozlov, Diego Darriba, Tomáš Flouri, Benoit Morel, and Alexandros Stamatakis (2019) RAxML-NG: A fast, scalable, and user-friendly tool for maximum likelihood phylogenetic inference. Bioinformatics, btz305 doi:10.1093/bioinformatics/btz305
+4. Ronquist, F., M. Teslenko, P. van der Mark, D.L. Ayres, A. Darling, S. Höhna, B. Larget, L. Liu, M.A. Suchard, and J.P. Huelsenbeck. 2012. MRBAYES 3.2: Efficient Bayesian phylogenetic inference and model selection across a large model space. Syst. Biol. 61:539-542.

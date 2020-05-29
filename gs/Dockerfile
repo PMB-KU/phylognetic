@@ -23,3 +23,5 @@ RUN make
 
 ENV PATH=/workspace/gs/MMseqs2/build/bin:$PATH
 ENV PATH=/workspace/gs:$PATH
+
+WORKDIR /local_volume
