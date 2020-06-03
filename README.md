@@ -55,6 +55,14 @@ docker build -t gs:latest ./gs
 docker run --rm -it -v $(pwd):/local_volume container_name
 ```
 
+**example**
+
+run gs container
+
+```bash
+docker run --rm -it -v $(pwd):/local_volume gs:latest
+```
+
 ### trimal
 
 Please read [MANUAL](http://trimal.cgenomics.org/use_of_the_command_line_trimal_v1.2)
@@ -64,6 +72,7 @@ Please read [MANUAL](http://trimal.cgenomics.org/use_of_the_command_line_trimal_
 removing not conserved sites for maximum likelihood method
 
 ```bash
+# in trimal container
 trimal -in seqs.afa -out seqs_trim.afa -automated1
 ```
 
@@ -74,7 +83,8 @@ Please read [github](https://github.com/MotomuMatsui/gs)
 **example:**
 construct phylogenetic tree with bootstrap and lables
 
-```
+```bash
+# in gs container
 gs2 -e 1000 -l example/200.faa > 200.nwk
 ```
 
@@ -85,7 +95,8 @@ Please read [github wiki]()
 **example:**
 construct phylogenetic tree by maximum likelihood method (ML search + bootsrap) with 8 core cpus
 
-```
+```bash
+# in raxml-ng-mpi container
 raxml-ng-mpi --msa input.afa --all --model LG+G+I --bs-trees 1000 --threads 8
 ```
 
