@@ -97,7 +97,22 @@ You should make the nexus format file from multiple alignment fasta.
 
 Please read [MANUAL](https://nbisweden.github.io/MrBayes/manual.html)
 
-**example:** todo!();
+**example:** Making nexus format file and run mrbayes with 8 core cpus
+
+```bash
+# in utils container
+
+## check duplicates in multiple alignment fasta and removing them
+check_duplicates -i seqs_trim.afa -o seqs_remove_duplicates.afa -m remove
+
+## converting fasta to nexus and add mrbayes default parameters
+fasta_to_nexus -i seqs_remove_duplicates.afa -o seqs_mrbayes.nex --mrbayes
+
+
+# run mrbayes in mrbayes container
+mpirun --allow-run-as-root -np 8 /MrBayes/src/mb
+>MrBayes execute seqs_mrbayes.nex
+```
 
 ## Reference
 
